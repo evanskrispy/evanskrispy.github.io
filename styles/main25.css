@@ -11,7 +11,11 @@ body {
     border: 1px solid black;
     border-radius: 25px;
     box-shadow: 5px 5px 0 0;
-    background-image:url(../images/shsu logo.png) ;
+    background-image:url(../images/shsu logo.png);
+    background-repeat:repeat-y;
+    background-position:right;
+    background-attachment:fixed;
+
 }
 a:focus, a:hover {
     font-style: italic;
@@ -29,7 +33,7 @@ h2{
 }
 img{
     float: left;
-    margin: 2;
+    margin: 2em;
 }
 .shadow{
     text-shadow: 2px 2px 2px rgb(128, 0, 0);

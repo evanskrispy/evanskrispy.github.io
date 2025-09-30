@@ -59,7 +59,7 @@ article img {
 article p::first-letter {
     font-size: 3em;
     font-weight: bold;
-    font-size: italic;
+    font-style: italic;
     color: aquamarine;
 }
 aside {

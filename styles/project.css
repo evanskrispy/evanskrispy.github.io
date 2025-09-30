@@ -16,7 +16,7 @@ body {
     background-position:right;
     background-attachment:fixed;
 }
-a:focus a:hover {
+a:focus, a:hover {
     font-style: italic;
     color:aqua;
     border: 3px blue;

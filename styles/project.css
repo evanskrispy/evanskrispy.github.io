@@ -19,6 +19,8 @@ body {
 a:focus, a:hover {
     font-style: italic;
     color:aqua;
+    border: 3px blue;
+    border-style: dotted solid;
 }
 h1{ 
     font-size: 175%;
@@ -36,4 +38,13 @@ img{
 }
 .shadow{
     text-shadow: 2px 2px 2px rgb(128, 0, 0);
+}
+article {
+    clear: left;
+    width: 70%;
+    float: left;
+    column-count: 2;
+    column-rule: 2px dotted blue;
+    column-gap: 2em;
+    margin-left: 2em;
 }

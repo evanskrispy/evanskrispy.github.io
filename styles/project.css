@@ -67,3 +67,10 @@ aside {
     float: right;
     background-color: white;
 }
+footer{
+    clear: both;
+    border-top: 2px solid maroon;
+}
+p.fixed {
+    width: auto;
+}

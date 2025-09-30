@@ -22,17 +22,17 @@ a:focus, a:hover {
     border: 3px blue;
     border-style: dotted solid;
 }
-h1{ 
+h1 { 
     font-size: 175%;
     color: aqua;
     text-indent: 30px;
 }
-h2{
+h2 {
     font-size: 130%;
     color: aqua;
     text-indent: 30px;
 }
-img{
+img {
     float: left;
     margin: 2em;
 }
@@ -47,4 +47,23 @@ article {
     column-rule: 2px dotted blue;
     column-gap: 2em;
     margin-left: 2em;
+}
+article h3 {
+    column-span: left;
+}
+article img {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+article p::first-letter {
+    font-size: 3em;
+    font-weight: bold;
+    font-size: italic;
+    color: aquamarine;
+}
+aside {
+    width: 20%;
+    float: right;
+    background-color: white;
 }

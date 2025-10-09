@@ -49,7 +49,7 @@ article {
     margin-left: 2em;
 }
 article h3 {
-    column-span: left;
+    column-span: all;
 }
 article img {
     float: left;
@@ -60,12 +60,13 @@ article p::first-letter {
     font-size: 3em;
     font-weight: bold;
     font-style: italic;
-    color: aquamarine;
+    color: lightgreen;
 }
 aside {
     width: 20%;
     float: right;
     background-color: white;
+    padding: 1em;
 }
 footer{
     clear: both;

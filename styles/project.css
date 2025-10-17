@@ -85,7 +85,7 @@ footer p.copyright {
 p.fixed {
     width: auto;
     position: fixed;
-    bottom: 90px;
+    bottom: 150px;
     right: 20px;
     background-color: lightgreen;
     border: 2px solid blue;

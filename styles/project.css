@@ -32,6 +32,11 @@ h2 {
     color: aqua;
     text-indent: 30px;
 }
+header {
+    border-bottom: 2px solid maroon;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+}
 img {
     float: left;
     margin: 2em;

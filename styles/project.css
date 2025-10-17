@@ -67,6 +67,7 @@ aside {
     float: right;
     background-color: white;
     padding: 1em;
+    border-top: 2px sienna;
 }
 footer{
     clear: both;
@@ -79,7 +80,7 @@ footer p.copyright {
 p.fixed {
     width: auto;
     position: fixed;
-    bottom: 10px;
+    bottom: 60px;
     right: 20px;
     background-color: lightgreen;
     border: 2px solid blue;

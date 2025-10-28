@@ -140,5 +140,15 @@ background-color: #222;
 .menu > li:not(:last-child) {
 border-bottom: 1px solid #444;
 }
-
+article h2{
+    font-size: 1.1em;
+}
+article p{
+    font-size: .8em;
+}
+footer{
+    border-top: 1px solid green;
+    text-align: center;
+    font-size: .6em;
+}
 }

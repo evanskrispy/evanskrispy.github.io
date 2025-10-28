@@ -74,3 +74,10 @@ margin-top: 0px;
 transform: rotate(-405deg);
 }
 /*----end of menu*/
+section a{
+    text-decoration: none;
+    color: white;
+}
+.menu a:hover, a.current {
+    text-decoration: underline;
+}

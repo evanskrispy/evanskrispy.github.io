@@ -3,7 +3,7 @@ body {
   margin: 15px auto;
   font-family: Arial, sans-serif;
   border: 2px solid black;
-  background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+  background-image: ("../images/shsulogo.jpg");
   background-repeat: repeat-y;
   background-position: right;
   background-attachment: fixed;

@@ -1,0 +1,10 @@
+body {
+  width: 95%;
+  margin: 15px auto;
+  font-family: Arial, sans-serif;
+  border: 2px solid black;
+  background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+  background-repeat: repeat-y;
+  background-position: right;
+  background-attachment: fixed;
+}

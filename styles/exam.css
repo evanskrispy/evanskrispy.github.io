@@ -27,17 +27,17 @@ nav ul li a {
 display: block;
 color: white;
 text-align: center;
-padding: auto;
+padding: 14px 20px;
 text-decoration:none ;
 }
 nav ul li a:hover,
 nav ul li a.current {
-background-color: 111;
+background-color: #111;
 }
 
 article {
   width: 75%;
-  float:left
+  float: left;
   padding: 15px;
 }
 aside {
@@ -55,7 +55,7 @@ aside ol {
 img {
   float: left;
   margin: 10px;
-  width: inherit;
+  width: 200px;
 }
 p::first-letter {
   font-size: 150%;
@@ -67,5 +67,6 @@ footer {
   border-top: 2px solid black;
   padding: 10px;
   background-color: blue;
+  color: white;
   clear: both;
 }

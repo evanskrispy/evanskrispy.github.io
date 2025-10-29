@@ -3,7 +3,7 @@ body {
   margin: 15px auto;
   font-family: Arial, sans-serif;
   border: 2px solid black;
-  background-image: ("../images/shsulogo.jpg");
+  background-image: url("../images/shsulogo.jpg");
   background-repeat: repeat-y;
   background-position: right;
   background-attachment: fixed;
@@ -23,7 +23,7 @@ nav ul li {
     padding: 0;
     overflow: hidden;
 }
-nav ul li {
+nav ul li a {
 display: block;
 color: white;
 text-align: center;

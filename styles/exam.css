@@ -12,12 +12,40 @@ nav {
 background-color: green;
 }
 nav ul {
-    margin: 0;
-    padding: 0;
-}
-nav ul li{
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
+}
+nav ul li {
+    float: left;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+nav ul li {
+display: block;
+color: white;
+text-align: center;
+padding: auto;
+text-decoration:none ;
+}
+nav ul li a:hover,
+nav ul li a.current {
+background-color: 111;
+}
+
+article{
+  width: 75%;
+  float:left
+  padding: 15px;
+}
+aside{
+  width: 20%;
+  position: fixed;
+  right: 15px;
+  top: 120px;
+  background-color: bisque;
+  border-left: 2px solid black;
+  padding: 10px;
 }

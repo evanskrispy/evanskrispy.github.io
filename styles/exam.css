@@ -47,6 +47,11 @@ article {
   float: left;
   padding: 15px;
 }
+img{
+  float: left;
+  margin: 0 15px 10px 0;
+  border-radius: 5em;
+}
 aside {
   width: 20%;
   position: fixed;

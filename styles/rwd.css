@@ -101,7 +101,7 @@ transform: rotate(-405deg);
         text-align: center;
         font-size: 0.8em;
     }
-    @media only screen add (max-width 700px){
+    @media screen (max-width 700px){
         .menu-button-container {
     display: flex;
     }

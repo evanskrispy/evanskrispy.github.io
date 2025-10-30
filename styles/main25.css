@@ -35,7 +35,9 @@ img {
     margin: 2em;
 }
 .float image{
-    
+    float: left;
+    margin-right: 15px;
+    margin-left: 20px;
 }
 .shadow{
     text-shadow: 2px 2px 2px rgb(128, 0, 0);

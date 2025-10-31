@@ -55,7 +55,7 @@ aside {
   right: 15px;
   top: 120px;
   background-color: bisque;
-  border-left: 2px solid black;
+  border: 2px solid black;
   padding: 10px;
 }
 aside ol {

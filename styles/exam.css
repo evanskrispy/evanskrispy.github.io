@@ -34,7 +34,11 @@ nav ul li a:hover,
 nav ul li a.current {
 background-color: #111;
 }
-
+header{
+    border-bottom: 2px solid black;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+}
 article {
   columns: 3;
   column-gap: 25px;

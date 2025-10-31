@@ -34,10 +34,7 @@ nav ul li a:hover,
 nav ul li a.current {
 background-color: #111;
 }
-footer{
-    clear: both;
-    border-top: 2px solid maroon;
-}
+
 article {
   columns: 3;
   column-gap: 25px;

@@ -85,3 +85,7 @@ footer {
   margin: 5px;
   display:block ;
 }
+footer p.copyright{
+text-align: center;
+font-size: 80%;
+}

@@ -76,7 +76,7 @@ p::first-letter {
 }
 footer {
   text-align: center;
-  border-top:  e2px solid black;
+  border-top:  2px solid black;
   padding: 10px;
   background-color: blue;
   color: white;

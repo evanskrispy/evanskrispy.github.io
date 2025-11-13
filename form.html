@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form action="register_account.html" method="post" id="registration_form">
+        <fieldset>
+        <legend>Registration Information</legend>
+        <label for="email">E-Mail:</label>
+        <input type="email" name="email" id="email"
+        autofocus required autocomplete="on"><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required
+        placeholder="At least 6 letters or numbers"
+        pattern="[a-zA-Z0-9]{6,}"
+        title="Must be at least 6 alphanumeric characters">
+        <br>
+        <label for="verify">Verify Password:</label>
+        <input type="password" name="verify" id="verify" required><br>
+        </fieldset>
+        
+    </form>
+</body>
+</html>

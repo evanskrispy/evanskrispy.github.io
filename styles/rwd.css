@@ -102,11 +102,10 @@ transform: rotate(-405deg);
         font-size: 0.8em;
     }
     @media screen and (max-width: 768px) {
-
-    .menu-button-container{ 
-    display: flex; 
-    }
-    }
+     .menu-button-container { 
+        display: flex; 
+  }
+}
     .menu {
     position: absolute;
     top: 0;

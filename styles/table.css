@@ -32,5 +32,52 @@ vertical-align: middle;
 border: 2px solid purple;
 }
 table.second thead tr:first-child{
-border-bottom: 2px solid purple 
+border-bottom: 2px solid purple /*-----------------------------------------------------------*/
+/* THIRD TABLE */
+table.third {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 1em;
+}
+
+/* General cell styling */
+table.third th,
+table.third td {
+    padding: 0.7em;
+    border: 1px solid black;
+}
+
+/* Category numbers aligned to top */
+table.third td.number {
+    vertical-align: top;
+}
+
+/* FIRST ROW of THEAD (title row) */
+table.third thead tr:first-child {
+    border-top: 2px solid orangered;
+    border-bottom: 2px solid black;
+}
+
+/* SECOND ROW of THEAD (header row) */
+table.third thead tr:nth-child(2) {
+    border-bottom: 2px solid black;
+}
+
+/* LAST ROW of TBODY */
+table.third tbody tr:last-child {
+    border-bottom: 2px solid orangered;
+}
+
+/* MEDIA QUERY — Requnired */
+@media only screen and (max-width: 425px) {
+    th, td {
+        display: block;
+    }
+    thead,
+    td.number {
+        display: none;
+        padding: 0;
+    }
+}
+
 }

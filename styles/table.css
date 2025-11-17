@@ -45,6 +45,7 @@ table.third th,
 table.third td {
     padding: 0.7em;
     border: 1px solid black;
+    text-align: left;
 }
 
 /* Category numbers aligned to top */

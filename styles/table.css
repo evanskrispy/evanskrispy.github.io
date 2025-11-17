@@ -1,84 +1,99 @@
 html, body {
-margin: 1em;
-height: 100%;
-font-size: 100%;
+  margin: 1em;
+  height: 100%;
+  font-size: 100%;
 }
+
 * {
-font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
 }
+
 /*-----------------------------------------------------------*/
+/* FIRST TABLE */
 table.first {
-border-collapse: separate;
-border: 2px solid black;
+  border-collapse: separate;
+  border: 2px solid black;
 }
-table.first th, table.first td {
-border: 2px solid blue;
+
+table.first th,
+table.first td {
+  border: 2px solid blue;
 }
+
 table.first tr:nth-child(odd) {
-background-color: lightblue;
+  background-color: lightblue;
 }
+
 /*-----------------------------------------------------------*/
+/* SECOND TABLE */
 table.second {
-border-collapse: collapse;
-border: 2px solid purple;
-caption-side: bottom;
+  border-collapse: collapse;
+  border: 2px solid purple;
+  caption-side: bottom;
 }
+
 table.second th {
-background-color: salmon;
+  background-color: salmon;
 }
-table.second th, table.second td {
-padding: 0.7em;
-vertical-align: middle;
-border: 2px solid purple;
+
+table.second th,
+table.second td {
+  padding: 0.7em;
+  vertical-align: middle;
+  border: 2px solid purple;
 }
-table.second thead tr:first-child{
-border-bottom: 2px solid purple /*-----------------------------------------------------------*/
+
+/* Fix: missing semicolon + closing brace */
+table.second thead tr:first-child {
+  border-bottom: 2px solid purple;
+}
+
+/*-----------------------------------------------------------*/
 /* THIRD TABLE */
 table.third {
-    border-collapse: collapse;
-    width: 100%;
-    margin-top: 1em;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 1em;
 }
 
 /* General cell styling */
 table.third th,
 table.third td {
-    padding: 0.7em;
-    border: 1px solid black;
-    text-align: left;
+  padding: 0.7em;
+  border: 1px solid black;
+  text-align: left;
 }
 
 /* Category numbers aligned to top */
 table.third td.number {
-    vertical-align: top;
+  vertical-align: top;
 }
 
 /* FIRST ROW of THEAD (title row) */
 table.third thead tr:first-child {
-    border-top: 2px solid orangered;
-    border-bottom: 2px solid black;
+  border-top: 2px solid orangered;
+  border-bottom: 2px solid black;
 }
 
 /* SECOND ROW of THEAD (header row) */
 table.third thead tr:nth-child(2) {
-    border-bottom: 2px solid black;
+  border-bottom: 2px solid black;
 }
 
 /* LAST ROW of TBODY */
 table.third tbody tr:last-child {
-    border-bottom: 2px solid orangered;
+  border-bottom: 2px solid orangered;
 }
 
-/* MEDIA QUERY — Requnired */
+/* MEDIA QUERY — Required */
 @media only screen and (max-width: 425px) {
-    th, td {
-        display: block;
-    }
-    thead,
-    td.number {
-        display: none;
-        padding: 0;
-    }
-}
+  th, td {
+    display: block;
+  }
 
+  thead,
+  td.number {
+    display: none;
+    padding: 0;
+  }
 }

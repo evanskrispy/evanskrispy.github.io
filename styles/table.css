@@ -62,7 +62,6 @@ table.third td {
   text-align: left;
 }
 
-/* Category numbers aligned to top */
 table.third td.number {
   vertical-align: top;
 }

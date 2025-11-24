@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Humanizer — Smart Grammar + AAVE / Edu Slang</title>
+  <style>
+    :root{
+      --bg:#0f1720;
+      --card:#111827;
+      --muted:#94a3b8;
+      --accent:#7c3aed;
+      --accent-2:#06b6d4;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Segoe UI Mono", monospace;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#071021 0%, #0b1320 100%);
+      color: #e6eef6;
+      padding:32px;
+      min-height:100vh;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+    }
+    .wrap{
+      width:100%;
+      max-width:1100px;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:24px;
+      align-items:start;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    h1{font-size:20px;margin:0 0 8px 0}
+    p.lead{color:var(--muted);margin:0 0 16px 0;font-size:13px}
+    textarea{
+      width:100%;
+      height:300px;
+      resize:vertical;
+      padding:14px;
+      font-size:15px;
+      border-radius:10px;
+      background:var(--glass);
+      color:inherit;
+      border:1px solid rgba(255,255,255,0.04);
+      outline:none;
+      line-height:1.45;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    .controls{
+      display:flex;
+      gap:10px;
+      margin-top:12px;
+      flex-wrap:wrap;
+    }
+    button{
+      background: linear-gradient(180deg,var(--accent), #5b21b6);
+      border: none;
+      padding:10px 14px;
+      border-radius:10px;
+      color:white;
+      cursor:pointer;
+      font-weight:600;
+      box-shadow: 0 6px 16px rgba(124,58,237,0.12);
+    }
+    button.ghost{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      color:var(--muted);
+      font-weight:600;
+    }
+    .options{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-top:14px;
+      flex-wrap:wrap;
+    }
+    label.switch{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      font-size:14px;
+      color:var(--muted);
+      user-select:none;
+    }
+    label.switch input{display:none}
+    .chip{
+      padding:6px 10px;
+      background:rgba(255,255,255,0.02);
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.03);
+      font-size:13px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      color:var(--muted);
+    }
+    .right-col{
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .preview{
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.03);
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      padding:12px;
+    }
+    .preview img{
+      width:100%;
+      height:auto;
+      max-height:260px;
+      object-fit:cover;
+      display:block;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .meta{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
+    }
+    .meta .tag{font-size:13px;color:var(--muted)}
+    .out{
+      min-height:120px;
+      background:transparent;
+      border-radius:8px;
+      padding:12px;
+      font-family:var(--mono);
+      font-size:13px;
+      color:#dbeafe;
+      border:1px dashed rgba(255,255,255,0.03);
+      overflow:auto;
+    }
+    .note{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:8px;
+      line-height:1.3;
+    }
+    footer{
+      margin-top:14px;
+      font-size:12px;
+      color:var(--muted);
+    }
+    .small{
+      font-size:12px;color:var(--muted);
+    }
+    @media (max-width:980px){
+      .wrap{grid-template-columns:1fr; padding-bottom:60px}
+      .right-col{order:-1}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Humanizer — Smart Grammar + Style</h1>
+      <p class="lead">Paste text below, then choose <strong>Smart Fix</strong> or <strong>Humanize</strong>. Toggle AAVE / educational slang for flavor. Use responsibly and respectfully.</p>
+
+      <textarea id="input" placeholder="Paste your draft here... example: 'i went to the store and bought apples but didnt buy any bananas... '"></textarea>
+
+      <div class="options">
+        <label class="switch">
+          <input type="checkbox" id="useAave">
+          <span class="chip">AAVE flavor</span>
+        </label>
+
+        <label class="switch">
+          <input type="checkbox" id="useEdu">
+          <span class="chip">Educational slang</span>
+        </label>
+
+        <label class="switch">
+          <input type="checkbox" id="conservative" checked>
+          <span class="chip">Conservative substitutions</span>
+        </label>
+
+        <div style="margin-left:auto" class="small">Intensity:
+          <input id="intensity" type="range" min="0" max="2" value="1" style="vertical-align:middle;margin-left:8px">
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="btnFix">Smart Fix</button>
+        <button id="btnHuman">Humanize</button>
+        <button id="btnClear" class="ghost">Clear</button>
+        <button id="btnCopy" class="ghost">Copy Output</button>
+      </div>
+
+      <div class="note">
+        <strong>Respectful usage note:</strong> AAVE and slang are part of living languages and communities. Use these tones respectfully and only when appropriate. This tool performs small, reversible substitutions — it's not a cultural substitute or translator.
+      </div>
+
+      <footer>
+        <div class="small">Pro tip: try short sample sentences to observe tone changes. If you need larger or more precise rewrites, consider pairing this UI with a writing review step.</div>
+      </footer>
+    </div>
+
+    <div class="right-col">
+      <div class="card preview">
+        <div class="meta">
+          <div>
+            <div style="font-weight:700">Preview image (uploaded)</div>
+            <div class="tag small">Local file preview — update path if needed</div>
+          </div>
+          <div class="tag small">/mnt/data/Screenshot 2025-11-24 145518.jpg</div>
+        </div>
+        <!-- Developer-provided image local path -->
+        <img id="uploadedImg" src="/mnt/data/Screenshot 2025-11-24 145518.jpg" alt="Uploaded screenshot">
+      </div>
+
+      <div class="card">
+        <div style="font-weight:700;margin-bottom:8px">Output</div>
+        <div id="output" class="out" contenteditable="false"></div>
+        <div style="margin-top:10px;display:flex;gap:8px">
+          <button id="btnSave" class="ghost">Download TXT</button>
+          <button id="btnExplain" class="ghost">Show Transform Log</button>
+        </div>
+      </div>
+
+      <div class="card small">
+        <div style="font-weight:700;margin-bottom:6px">How it works (brief)</div>
+        <ul style="margin:0 0 0 18px;color:var(--muted);line-height:1.4">
+          <li><strong>Smart Fix</strong> = punctuation/spacing, common typos, sentence capitalization.</li>
+          <li><strong>Humanize</strong> = Smart Fix + stylistic substitutions (AAVE/edu slang) applied conservatively.</li>
+          <li>Intensity controls how many substitutions are applied. Toggle "Conservative" to limit more aggressive replacements.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // small substitution maps (kept conservative & reversible)
+    const typoMap = {
+      "\\bteh\\b":"the",
+      "\\brecieve\\b":"receive",
+      "\\bthier\\b":"their",
+      "\\bdefinately\\b":"definitely",
+      "\\bdont\\b":"don't",
+      "\\bdoesnt\\b":"doesn't",
+      "\\bim\\b":"I'm",
+      "\\bIm\\b":"I'm",
+      "\\bive\\b":"I've",
+      "\\bweren't\\b":"weren't"
+    };
+
+    const eduMap = {
+      "\\bstudy\\b":"study",
+      "\\bstudying\\b":"studying",
+      "\\bassignment\\b":"assignment",
+      "\\bhomework\\b":"homework",
+      "\\bprofessor\\b":"prof",
+      "\\bnotebook\\b":"notebook",
+      "\\bgroup project\\b":"group project",
+      // light slang:
+      "\\bvery\\b":"super",
+      "\\breally\\b":"really",
+      "\\bimportant\\b":"key"
+    };
+
+    const aaveMap = {
+      "\\breally\\b":"for real",
+      "\\bgoing to\\b":"gonna",
+      "\\bgoing\\sto\\b":"gonna",
+      "\\bgoing\\s+to\\b":"gonna",
+      "\\ball right\\b":"aight",
+      "\\bokay\\b":"ok",
+      "\\balright\\b":"aight",
+      "\\bfriend\\b":"homie",
+      "\\bmy friend\\b":"my homie",
+      "\\bseriously\\b":"fr",
+      "\\bfor sure\\b":"bet",
+      "\\bno problem\\b":"no cap"
+    };
+
+    // small transform log
+    let transformLog = [];
+
+    function smartFix(text){
+      transformLog = [];
+      let out = text || "";
+
+      out = out.replace(/\s+/g, " "); // collapse multiple spaces
+      out = out.replace(/\s+([,.!?;:])/g, "$1"); // remove space before punctuation
+      out = out.replace(/([,.!?;:])([^\s])/g, "$1 $2"); // ensure 1 space after punctuation
+      out = out.trim();
+
+      // sentence capitalization (simple)
+      out = out.split(/([.?!]\s+)/).map(s=>{
+        return s.length>0 ? s.replace(/^\s*[a-z]/, ch => ch.toUpperCase()) : s;
+      }).join("");
+
+      // apply typo map
+      for(const pat in typoMap){
+        const re = new RegExp(pat,"gi");
+        if(re.test(out)){
+          out = out.replace(re, typoMap[pat]);
+          transformLog.push(`Typo fix: ${pat} -> ${typoMap[pat]}`);
+        }
+      }
+
+      // fix common contraction spacing issues (e.g., do n't)
+      out = out.replace(/\b([a-zA-Z])\s+'t\b/gi, "$1't");
+      out = out.replace(/\bcan not\b/gi, "cannot");
+
+      return out;
+    }
+
+    function applyMap(out, map, intensity, conservative){
+      for(const pat in map){
+        const re = new RegExp(pat,"gi");
+        if(!re.test(out)) continue;
+        // intensity controls how often we apply: intensity 0 (rare), 1 (normal), 2 (aggressive)
+        if(conservative && intensity>1){
+          // if conservative is checked and intensity is aggressive, reduce some aggressive replacements:
+          if(Math.random() > 0.6) continue;
+        }
+        out = out.replace(re, map[pat]);
+        transformLog.push(`Substitute: ${pat} -> ${map[pat]}`);
+      }
+      return out;
+    }
+
+    function humanizeText(orig, options){
+      let out = smartFix(orig);
+      const intensity = parseInt(options.intensity);
+      const conservative = options.conservative;
+
+      if(options.useEdu){
+        out = applyMap(out, eduMap, intensity, conservative);
+      }
+      if(options.useAave){
+        out = applyMap(out, aaveMap, intensity, conservative);
+      }
+
+      // mild final cleanup: double spaces, punctuation
+      out = out.replace(/\s+/g," ");
+      out = out.replace(/\s+([,.!?;:])/g,"$1");
+
+      return out;
+    }
+
+    // UI wiring
+    const inputEl = document.getElementById("input");
+    const outEl = document.getElementById("output");
+    const btnFix = document.getElementById("btnFix");
+    const btnHuman = document.getElementById("btnHuman");
+    const btnClear = document.getElementById("btnClear");
+    const btnCopy = document.getElementById("btnCopy");
+    const btnSave = document.getElementById("btnSave");
+    const btnExplain = document.getElementById("btnExplain");
+
+    btnFix.addEventListener("click", ()=>{
+      const text = inputEl.value;
+      const fixed = smartFix(text);
+      outEl.textContent = fixed;
+      transformLog.unshift("Action: Smart Fix");
+    });
+
+    btnHuman.addEventListener("click", ()=>{
+      const text = inputEl.value;
+      const useAave = document.getElementById("useAave").checked;
+      const useEdu = document.getElementById("useEdu").checked;
+      const intensity = document.getElementById("intensity").value;
+      const conservative = document.getElementById("conservative").checked;
+
+      const result = humanizeText(text, {useAave, useEdu, intensity, conservative});
+      outEl.textContent = result;
+      transformLog.unshift(`Action: Humanize (AAVE:${useAave}, Edu:${useEdu}, Int:${intensity}, Conservative:${conservative})`);
+    });
+
+    btnClear.addEventListener("click", ()=>{
+      inputEl.value = "";
+      outEl.textContent = "";
+      transformLog = [];
+    });
+
+    btnCopy.addEventListener("click", async ()=>{
+      try{
+        await navigator.clipboard.writeText(outEl.textContent || "");
+        btnCopy.textContent = "Copied!";
+        setTimeout(()=> btnCopy.textContent = "Copy Output",1200);
+      }catch(e){
+        btnCopy.textContent = "Copy failed";
+        setTimeout(()=> btnCopy.textContent = "Copy Output",1200);
+      }
+    });
+
+    btnSave.addEventListener("click", ()=>{
+      const blob = new Blob([outEl.textContent || ""], {type:"text/plain;charset=utf-8"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "humanized.txt";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    btnExplain.addEventListener("click", ()=>{
+      if(transformLog.length===0){
+        alert("No transformations logged yet. Run Smart Fix or Humanize first.");
+        return;
+      }
+      alert("Transform log (most recent first):\n\n" + transformLog.join("\n"));
+    });
+
+    // small demo text to help you test quickly
+    inputEl.value = "hey i went to the library and studied for the exam but i didnt finish all the assignment. it was very tiring. i am going to try again tomorrow. really hope it helps.";
+  </script>
+</body>
+</html>

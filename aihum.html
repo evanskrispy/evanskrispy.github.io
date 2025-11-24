@@ -324,18 +324,27 @@
     }
 
     function applyMap(out, map, intensity, conservative){
-      for(const pat in map){
-        const re = new RegExp(pat,"gi");
-        if(!re.test(out)) continue;
-        // intensity controls how often we apply: intensity 0 (rare), 1 (normal), 2 (aggressive)
-        if(conservative && intensity>1){
-          // if conservative is checked and intensity is aggressive, reduce some aggressive replacements:
-          if(Math.random() > 0.6) continue;
-        }
-        out = out.replace(re, map[pat]);
-        transformLog.push(`Substitute: ${pat} -> ${map[pat]}`);
-      }
-      return out;
+  for(const pat in map){
+    const re = new RegExp(pat,"gi");
+
+    // always apply if conservative OFF
+    if(!conservative){
+      out = out.replace(re, map[pat]);
+      transformLog.push(`Substitute: ${pat} -> ${map[pat]}`);
+      continue;
+    }
+
+    // if conservative ON, apply based on intensity
+    if(intensity == 0 && Math.random() > 0.2) continue;
+    if(intensity == 1 && Math.random() > 0.5) continue;
+    if(intensity == 2 && Math.random() > 0.8) continue;
+
+    out = out.replace(re, map[pat]);
+    transformLog.push(`Substitute: ${pat} -> ${map[pat]}`);
+  }
+  return out;
+}
+
     }
 
     function humanizeText(orig, options){

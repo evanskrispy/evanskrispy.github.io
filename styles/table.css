@@ -59,13 +59,13 @@ table.third {
 table.third th {
   background-color: green;
 }
-
+table.third th,
 table.third td {
   padding: 0.7em;
   border: 1px solid black;
   text-align: left;
 }
-table
+
 table.third td.number {
   vertical-align: top;
 }

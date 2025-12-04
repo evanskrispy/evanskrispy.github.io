@@ -51,21 +51,21 @@ table.second thead tr:first-child {
 /* THIRD TABLE */
 table.third {
   border-collapse: collapse;
-  width: 100%;
+  border:  solid white;
+  caption-side: top;
   margin-top: 1em;
 }
+
 table.third th {
   background-color: green;
-  padding: 0.7em;
-  border: 1px solid black;
-  text-align: left;
 }
+
 table.third td {
   padding: 0.7em;
   border: 1px solid black;
   text-align: left;
 }
-
+table
 table.third td.number {
   vertical-align: top;
 }

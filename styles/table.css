@@ -54,8 +54,12 @@ table.third {
   width: 100%;
   margin-top: 1em;
 }
-
-table.third th,
+table.third th {
+  background-color: green;
+  padding: 0.7em;
+  border: 1px solid black;
+  text-align: left;
+}
 table.third td {
   padding: 0.7em;
   border: 1px solid black;

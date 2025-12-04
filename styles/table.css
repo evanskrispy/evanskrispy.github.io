@@ -51,7 +51,10 @@ table.second thead tr:first-child {
 /* THIRD TABLE */
 table.third {
   border-collapse: collapse;
-  border:  solid white;
+  border-top:  white;
+  border-right: none;
+  border-bottom: none;
+  border-left: none;
   caption-side: top;
   margin-top: 1em;
 }

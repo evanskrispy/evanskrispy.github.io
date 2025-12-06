@@ -80,9 +80,7 @@ table.third thead tr:first-child {
 }
 
 /* SECOND ROW of THEAD (header row) */
-table.third thead tr:nth-child(2) {
-  border-bottom: 2px solid black;
-}
+
 
 /* LAST ROW of TBODY */
 table.third tbody tr:last-child {

@@ -1,0 +1,122 @@
+/* =========================
+   Global Styles
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: url("background.jpg") no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  color: #222;
+}
+
+/* Blurred overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(7px);
+  background-color: rgba(255, 255, 255, 0.35);
+  z-index: -1;
+}
+
+/* =========================
+   Header
+========================= */
+.header {
+  padding: 20px;
+}
+
+.profile-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   Contact Card
+========================= */
+.contact-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.contact-list {
+  list-style: none;
+  background: rgba(255, 255, 255, 0.92);
+  width: 100%;
+  max-width: 420px;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.contact-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+  padding: 12px;
+  border-radius: 10px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.contact-list li:last-child {
+  margin-bottom: 0;
+}
+
+.contact-list li:hover {
+  background: rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+}
+
+.contact-list span {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+}
+
+.contact-list a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #222;
+  transition: color 0.3s ease;
+}
+
+.contact-list a:hover {
+  color: #0066cc;
+}
+
+/* =========================
+   Responsive Enhancements
+========================= */
+@media (min-width: 768px) {
+  .header {
+    padding: 30px 40px;
+  }
+
+  .profile-img {
+    width: 110px;
+    height: 110px;
+  }
+
+  .contact-list {
+    padding: 30px;
+  }
+}

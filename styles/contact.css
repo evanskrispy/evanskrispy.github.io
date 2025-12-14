@@ -25,6 +25,67 @@ body::before {
   background-color: rgba(255, 255, 255, 0.35);
   z-index: -1;
 }
+/* =========================
+   Navigation Bar
+========================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-logo {
+  font-weight: 600;
+  text-decoration: none;
+  color: #222;
+  transition: color 0.3s ease;
+}
+
+.nav-logo:hover {
+  color: #0066cc;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #444;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.nav-links a:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #0066cc;
+}
+
+.nav-links .active {
+  background: rgba(0, 102, 204, 0.12);
+  color: #0066cc;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .nav-logo {
+    font-size: 0.9rem;
+  }
+
+  .nav-links {
+    gap: 10px;
+  }
+}
 
 /* =========================
    Header

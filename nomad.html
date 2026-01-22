@@ -3,33 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Complementary Item Selector</title>
+<title>Nomad Nest Hostel</title>
 <style>
   body {
     font-family: "Poppins", sans-serif;
-    background: #f3f7ff;
+    background: #f4f8fb;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
+    margin: 0;
     color: #333;
   }
 
-  h2 {
-    margin-bottom: 20px;
-    font-weight: 600;
-    color: #1e3a8a;
+  .card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 340px;
   }
 
+  h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+  }
+
+  input, select, button, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+
+  button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  button:hover {
+    background: #1e40af;
+  }
+
+  .hidden { display: none; }
+
   .selector {
-    background: white;
-    border-radius: 20px;
-    padding: 20px 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     display: flex;
-    gap: 25px;
-    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
   }
 
   .option {
@@ -37,81 +65,159 @@
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    transition: 0.3s ease;
   }
 
   .option img {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 10px;
+    width: 70px;
+    height: 70px;
     border-radius: 12px;
     border: 3px solid transparent;
+    transition: 0.3s;
   }
 
   .option.selected img {
     border-color: #2563eb;
   }
 
-  .option span {
-    font-weight: 500;
-  }
-
-  button {
-    margin-top: 30px;
-    background-color: #2563eb;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    font-size: 1rem;
-    border-radius: 10px;
+  .stars span {
+    font-size: 25px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    color: #ccc;
   }
 
-  button:hover {
-    background-color: #1e40af;
+  .stars span.selected {
+    color: gold;
   }
 </style>
 </head>
 <body>
 
-  <h2>Choose Your Complimentary Perk</h2>
+<!-- Home -->
+<div class="card" id="homeScreen">
+  <h2>Welcome to Nomad Nest Hostel</h2>
+  <p>No front desk, no hassle — just check in, relax, and check out when ready.</p>
+  <button onclick="showCheckIn()">Check In</button>
+  <button onclick="showCheckOut()">Check Out</button>
+</div>
 
+<!-- Check-In Form -->
+<div class="card hidden" id="checkInForm">
+  <h2>Guest Information</h2>
+  <input type="text" id="guestName" placeholder="Full Name">
+  <input type="text" id="guestID" placeholder="ID Number">
+  <select id="stayLength">
+    <option value="">Select Stay Length</option>
+    <option>1 Night</option>
+    <option>2 Nights</option>
+    <option>3+ Nights</option>
+  </select>
+  <button onclick="nextToPerk()">Next</button>
+</div>
+
+<!-- Complimentary Item Selector -->
+<div class="card hidden" id="perkSelector">
+  <h2>Choose Your Complimentary Item</h2>
   <div class="selector">
-    <div class="option" id="snack">
+    <div class="option" id="snack" onclick="selectPerk('Snack')">
       <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png" alt="Snack">
       <span>Snack</span>
     </div>
-
-    <div class="option" id="pokemon">
+    <div class="option" id="pokemon" onclick="selectPerk('Pokémon Card')">
       <img src="https://cdn-icons-png.flaticon.com/512/188/188987.png" alt="Pokémon Card">
       <span>Pokémon Card</span>
     </div>
   </div>
+  <button onclick="confirmCheckIn()">Confirm Check-In</button>
+</div>
 
-  <button id="confirmBtn">Confirm Selection</button>
+<!-- Check-In Confirmation -->
+<div class="card hidden" id="confirmationScreen">
+  <h2>Check-In Successful!</h2>
+  <p id="confirmMsg"></p>
+  <button onclick="goHome()">Return Home</button>
+</div>
 
-  <script>
-    const options = document.querySelectorAll('.option');
-    const confirmBtn = document.getElementById('confirmBtn');
-    let selected = null;
+<!-- Check-Out -->
+<div class="card hidden" id="checkOutScreen">
+  <h2>Check-Out</h2>
+  <p>We hope you enjoyed your stay! Please leave a quick rating below:</p>
+  <div class="stars" id="stars">
+    <span onclick="rate(1)">★</span>
+    <span onclick="rate(2)">★</span>
+    <span onclick="rate(3)">★</span>
+    <span onclick="rate(4)">★</span>
+    <span onclick="rate(5)">★</span>
+  </div>
+  <textarea id="feedback" rows="3" placeholder="Additional comments..."></textarea>
+  <button onclick="submitFeedback()">Submit Feedback</button>
+</div>
 
-    options.forEach(option => {
-      option.addEventListener('click', () => {
-        options.forEach(o => o.classList.remove('selected'));
-        option.classList.add('selected');
-        selected = option.id;
-      });
+<!-- Thank You -->
+<div class="card hidden" id="thankYouScreen">
+  <h2>Check-Out Complete</h2>
+  <p>Thank you for staying at Nomad Nest Hostel 🌙<br>Your feedback helps us grow.</p>
+  <button onclick="goHome()">Return Home</button>
+</div>
+
+<script>
+  const home = document.getElementById('homeScreen');
+  const form = document.getElementById('checkInForm');
+  const perk = document.getElementById('perkSelector');
+  const confirmScreen = document.getElementById('confirmationScreen');
+  const checkout = document.getElementById('checkOutScreen');
+  const thankyou = document.getElementById('thankYouScreen');
+  let selectedPerk = null;
+
+  function showCheckIn() {
+    home.classList.add('hidden');
+    form.classList.remove('hidden');
+  }
+
+  function nextToPerk() {
+    const name = document.getElementById('guestName').value.trim();
+    const id = document.getElementById('guestID').value.trim();
+    const stay = document.getElementById('stayLength').value;
+    if (!name || !id || !stay) return alert('Please complete all fields.');
+    form.classList.add('hidden');
+    perk.classList.remove('hidden');
+  }
+
+  function selectPerk(item) {
+    selectedPerk = item;
+    document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+    document.getElementById(item === 'Snack' ? 'snack' : 'pokemon').classList.add('selected');
+  }
+
+  function confirmCheckIn() {
+    if (!selectedPerk) return alert('Please select your complimentary item.');
+    perk.classList.add('hidden');
+    confirmScreen.classList.remove('hidden');
+    const guest = document.getElementById('guestName').value;
+    document.getElementById('confirmMsg').textContent =
+      `${guest}, your check-in is confirmed! You selected a ${selectedPerk}. Enjoy your stay!`;
+  }
+
+  function showCheckOut() {
+    home.classList.add('hidden');
+    checkout.classList.remove('hidden');
+  }
+
+  function rate(stars) {
+    document.querySelectorAll('.stars span').forEach((s, i) => {
+      s.classList.toggle('selected', i < stars);
     });
+  }
 
-    confirmBtn.addEventListener('click', () => {
-      if (selected) {
-        alert(`You selected: ${selected === 'snack' ? 'Snack 🍪' : 'Pokémon Card 🃏'}`);
-      } else {
-        alert('Please select a complimentary item first.');
-      }
-    });
-  </script>
+  function submitFeedback() {
+    checkout.classList.add('hidden');
+    thankyou.classList.remove('hidden');
+  }
+
+  function goHome() {
+    document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
+    home.classList.remove('hidden');
+  }
+</script>
 
 </body>
 </html>

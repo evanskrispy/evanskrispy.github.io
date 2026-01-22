@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complementary Item Selector</title>
+<style>
+  body {
+    font-family: "Poppins", sans-serif;
+    background: #f3f7ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #333;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #1e3a8a;
+  }
+
+  .selector {
+    background: white;
+    border-radius: 20px;
+    padding: 20px 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 25px;
+    align-items: center;
+  }
+
+  .option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .option img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    border: 3px solid transparent;
+  }
+
+  .option.selected img {
+    border-color: #2563eb;
+  }
+
+  .option span {
+    font-weight: 500;
+  }
+
+  button {
+    margin-top: 30px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #1e40af;
+  }
+</style>
+</head>
+<body>
+
+  <h2>Choose Your Complimentary Perk</h2>
+
+  <div class="selector">
+    <div class="option" id="snack">
+      <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png" alt="Snack">
+      <span>Snack</span>
+    </div>
+
+    <div class="option" id="pokemon">
+      <img src="https://cdn-icons-png.flaticon.com/512/188/188987.png" alt="Pokémon Card">
+      <span>Pokémon Card</span>
+    </div>
+  </div>
+
+  <button id="confirmBtn">Confirm Selection</button>
+
+  <script>
+    const options = document.querySelectorAll('.option');
+    const confirmBtn = document.getElementById('confirmBtn');
+    let selected = null;
+
+    options.forEach(option => {
+      option.addEventListener('click', () => {
+        options.forEach(o => o.classList.remove('selected'));
+        option.classList.add('selected');
+        selected = option.id;
+      });
+    });
+
+    confirmBtn.addEventListener('click', () => {
+      if (selected) {
+        alert(`You selected: ${selected === 'snack' ? 'Snack 🍪' : 'Pokémon Card 🃏'}`);
+      } else {
+        alert('Please select a complimentary item first.');
+      }
+    });
+  </script>
+
+</body>
+</html>

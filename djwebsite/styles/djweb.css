@@ -1,20 +1,24 @@
+/* --- GLOBAL STYLES --- */
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
-    background: #111;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #111;
     color: #eee;
+    line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* --- UPDATED NAVIGATION START --- */
+/* --- CENTERED NAVIGATION --- */
 nav {
     display: flex;
-    justify-content: space-between; /* Adjusted for hamburger alignment */
+    justify-content: center; /* Centers the entire menu */
     align-items: center;
-    padding: 1rem 2rem;
-    background: #222;
-    position: relative;
-    z-index: 100;
+    padding: 1.5rem 2rem;
+    background-color: #1a1a1a;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #333;
 }
 
 .nav-links {
@@ -22,30 +26,33 @@ nav {
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 2rem;
+    gap: 3rem; /* Professional spacing between links */
 }
 
 nav a {
     color: #eee;
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
 }
 
 nav a:hover, nav a.active {
-    color: #ff2a68;
+    color: #ff2a68; /* Neon accent color */
 }
 
-/* Hide the checkbox logic */
+/* --- HAMBURGER MENU (MOBILE) --- */
 .nav-toggle {
     display: none;
 }
 
-/* Hamburger Icon Styling */
 .nav-toggle-label {
-    display: none; /* Hidden on desktop */
+    display: none;
     cursor: pointer;
-    padding: 1rem 0;
+    position: absolute;
+    right: 2rem;
 }
 
 .nav-toggle-label span,
@@ -68,81 +75,76 @@ nav a:hover, nav a.active {
 .nav-toggle-label span::before { bottom: 8px; }
 .nav-toggle-label span::after { top: 8px; }
 
-/* Mobile View Logic (Screens under 768px) */
-@media screen and (max-width: 768px) {
-    .nav-toggle-label {
-        display: block; /* Show hamburger on mobile */
-    }
-
-    .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background: #222;
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        gap: 0;
-        overflow: hidden;
-        max-height: 0; /* Hidden by default */
-        transition: max-height 0.4s ease-in-out;
-    }
-
-    .nav-links li {
-        width: 100%;
-        text-align: center;
-        border-top: 1px solid #333;
-    }
-
-    .nav-links a {
-        display: block;
-        padding: 1.5rem;
-    }
-
-    /* Reveal menu when checkbox is checked */
-    .nav-toggle:checked ~ .nav-links {
-        max-height: 500px; /* Expands the menu */
-    }
-}
-/* --- UPDATED NAVIGATION END --- */
-
+/* --- HERO SECTION --- */
 .hero {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80vh;
+    height: 70vh;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('your-hero-image.jpg'); /* Add your image path */
+    background-size: cover;
+    background-position: center;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 0 0 10px #ff2a68;
+}
+
+.btn-book {
+    padding: 1rem 2.5rem;
+    background-color: #ff2a68;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: transform 0.3s;
+}
+
+.btn-book:hover {
+    transform: scale(1.05);
+    background-color: #e6225a;
+}
+
+/* --- ABOUT NARRATIVE --- */
+.about-narrative {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 0 2rem;
     text-align: center;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 400px;
-    margin: 2rem auto;
+.about-narrative h1 {
+    color: #ff2a68;
+    margin-bottom: 2rem;
 }
-/* --- FEATURES GRID START --- */
+
+/* --- FEATURES GRID --- */
 .features-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 3rem 2rem;
-    background: #1a1a1a; /* Contrast background */
-    gap: 2rem;
+    justify-content: center;
+    background-color: #1a1a1a;
+    padding: 4rem 2rem;
+    gap: 4rem;
 }
 
 .feature-column {
     flex: 1;
     min-width: 300px;
-    max-width: 500px;
+    max-width: 450px;
 }
 
 .feature-column h2 {
-    color: #ff2a68; /* Neon accent color */
+    color: #ff2a68;
     border-bottom: 2px solid #333;
-    padding-bottom: 0.5rem;
+    padding-bottom: 1rem;
     margin-bottom: 1.5rem;
+    text-transform: uppercase;
 }
 
 .feature-column ul {
@@ -151,25 +153,69 @@ form {
 }
 
 .feature-column li {
-    padding: 0.8rem 0;
+    padding: 0.8rem 0 0.8rem 2rem;
     border-bottom: 1px solid #222;
     position: relative;
-    padding-left: 1.5rem;
 }
 
-/* Custom star bullet points */
 .feature-column li::before {
-    content: "★";
+    content: '★';
     position: absolute;
     left: 0;
     color: #ff2a68;
 }
 
-/* Mobile responsive layout */
-@media screen and (max-width: 768px) {
-    .features-grid {
-        flex-direction: column;
-        align-items: center;
-    }
+/* --- CONTACT FORM --- */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    max-width: 500px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: #1a1a1a;
+    border-radius: 8px;
 }
-/* --- FEATURES GRID END --- */
+
+input, textarea {
+    padding: 1rem;
+    background: #222;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 4px;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media screen and (max-width: 768px) {
+    .nav-toggle-label { display: block; }
+    
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #1a1a1a;
+        flex-direction: column;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+    }
+
+    .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid #222;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    .nav-toggle:checked ~ .nav-links {
+        max-height: 500px;
+    }
+
+    .hero h1 { font-size: 2.5rem; }
+}

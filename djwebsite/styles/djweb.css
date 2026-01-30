@@ -219,3 +219,90 @@ input, textarea {
 
     .hero h1 { font-size: 2.5rem; }
 }
+/* --- PRICING & PACKAGES STYLES --- */
+.pricing-container {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.packages-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.package-card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    padding: 2rem;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.package-card.featured {
+    border-color: #ff2a68;
+    box-shadow: 0 0 15px rgba(255, 42, 104, 0.2);
+}
+
+.package-card:hover {
+    transform: translateY(-10px);
+}
+
+.package-card h2 {
+    color: #ff2a68;
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 2rem;
+}
+
+.package-card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.package-card li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #222;
+}
+
+.package-card li::before {
+    content: "✓ ";
+    color: #ff2a68;
+}
+
+/* Addons Grid Styling */
+.addons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.addon-item {
+    background: #222;
+    padding: 1.5rem;
+    border-radius: 4px;
+    border-left: 4px solid #ff2a68;
+}
+
+.addon-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.addon-item p {
+    color: #ff2a68;
+    font-weight: bold;
+}

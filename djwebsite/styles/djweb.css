@@ -122,3 +122,54 @@ form {
     max-width: 400px;
     margin: 2rem auto;
 }
+/* --- FEATURES GRID START --- */
+.features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 3rem 2rem;
+    background: #1a1a1a; /* Contrast background */
+    gap: 2rem;
+}
+
+.feature-column {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.feature-column h2 {
+    color: #ff2a68; /* Neon accent color */
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.feature-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-column li {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #222;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+/* Custom star bullet points */
+.feature-column li::before {
+    content: "★";
+    position: absolute;
+    left: 0;
+    color: #ff2a68;
+}
+
+/* Mobile responsive layout */
+@media screen and (max-width: 768px) {
+    .features-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* --- FEATURES GRID END --- */

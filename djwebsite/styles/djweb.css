@@ -383,7 +383,7 @@ input, textarea {
     display: flex;
     flex-wrap: wrap;
     background-color: #865ada; /* Dark Green/Teal like Dixie DJ */
-    color: #023609; /* Dark text for contrast */
+    color: #111; /* Dark text for contrast */
     padding: 4rem 2rem;
     gap: 2rem;
     justify-content: center;

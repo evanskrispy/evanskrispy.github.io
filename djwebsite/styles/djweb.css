@@ -383,7 +383,7 @@ input, textarea {
     display: flex;
     flex-wrap: wrap;
     background-color: #4b8b8b; /* Dark Green/Teal like Dixie DJ */
-    color: #111; /* Dark text for contrast */
+    color: #023609; /* Dark text for contrast */
     padding: 4rem 2rem;
     gap: 2rem;
     justify-content: center;
@@ -437,4 +437,10 @@ input, textarea {
         text-align: center;
     }
     .contact-details { text-align: center; }
+}
+/* Centers the "Get in Touch" heading */
+.page-content h1.neon {
+    text-align: center;
+    margin-bottom: 2rem;
+    width: 100%;
 }

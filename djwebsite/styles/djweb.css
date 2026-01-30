@@ -8,10 +8,10 @@ body {
     overflow-x: hidden;
 }
 
-/* --- CENTERED NAVIGATION --- */
+/* --- CONSISTENT CENTERED NAVIGATION --- */
 nav {
     display: flex;
-    justify-content: center; /* Centers the entire menu */
+    justify-content: center; /* Pulls menu to the center on all pages */
     align-items: center;
     padding: 1.5rem 2rem;
     background-color: #1a1a1a;
@@ -26,7 +26,7 @@ nav {
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 3rem; /* Professional spacing between links */
+    gap: 3rem; /* Uniform spacing between links */
 }
 
 nav a {
@@ -40,7 +40,7 @@ nav a {
 }
 
 nav a:hover, nav a.active {
-    color: #ff2a68; /* Neon accent color */
+    color: #ff2a68;
 }
 
 /* --- HAMBURGER MENU (MOBILE) --- */

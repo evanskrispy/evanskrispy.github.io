@@ -337,3 +337,80 @@ input, textarea {
   from {opacity: .4} 
   to {opacity: 1}
 }
+/* Why Choose Us Layout */
+.why-choose-us {
+    display: flex;
+    align-items: center;
+    padding: 4rem 2rem;
+    gap: 3rem;
+    background: #111;
+}
+
+.why-text { flex: 1; }
+.why-image { flex: 1; }
+.why-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(255, 42, 104, 0.3);
+}
+
+/* Dark Green Contact Section Styling */
+.home-contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #4b8b8b; /* Dark Green/Teal like Dixie DJ */
+    color: #111; /* Dark text for contrast */
+    padding: 4rem 2rem;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-details {
+    flex: 1;
+    min-width: 300px;
+    text-align: left;
+}
+
+.contact-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-image-container {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-image-container img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 4px;
+}
+
+/* Functional Contact Button */
+.contact-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: transform 0.3s ease;
+}
+
+.contact-btn:hover {
+    transform: scale(1.05);
+    background-color: #222;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .why-choose-us, .home-contact-info {
+        flex-direction: column;
+        text-align: center;
+    }
+    .contact-details { text-align: center; }
+}

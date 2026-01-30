@@ -338,18 +338,42 @@ input, textarea {
   to {opacity: 1}
 }
 /* Why Choose Us Layout */
+/* --- CENTERED WHY CHOOSE US SECTION --- */
 .why-choose-us {
     display: flex;
-    align-items: center;
+    flex-direction: column; /* Stacks text and image vertically  */
+    align-items: center;    /* Centers items horizontally [cite: 3] */
+    text-align: center;     /* Centers the title and text [cite: 3] */
     padding: 4rem 2rem;
-    gap: 3rem;
+    gap: 2rem;
     background: #111;
 }
 
-.why-text { flex: 1; }
-.why-image { flex: 1; }
+.why-text {
+    max-width: 800px; /* Limits width for better readability [cite: 3] */
+}
+
+.why-text ul {
+    list-style: none;
+    padding: 0;
+    display: inline-block; /* Allows the list block to center [cite: 3] */
+    text-align: left;      /* Keeps the stars aligned on the left  */
+}
+
+.why-text li {
+    padding: 0.5rem 0;
+    color: #eee;
+    font-size: 1.1rem;
+}
+
+.why-image {
+    width: 100%;
+    max-width: 800px;
+}
+
 .why-image img {
     width: 100%;
+    height: auto;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(255, 42, 104, 0.3);
 }

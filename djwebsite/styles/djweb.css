@@ -1,17 +1,28 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background: #111 ;
+    background: #111;
     color: #eee;
     overflow-x: hidden;
 }
 
+/* --- UPDATED NAVIGATION START --- */
 nav {
     display: flex;
-    justify-content: center;
-    gap: 2rem;
-    padding: 1rem;
+    justify-content: space-between; /* Adjusted for hamburger alignment */
+    align-items: center;
+    padding: 1rem 2rem;
     background: #222;
+    position: relative;
+    z-index: 100;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
 }
 
 nav a {
@@ -21,9 +32,79 @@ nav a {
     transition: color 0.3s;
 }
 
-nav a:hover {
+nav a:hover, nav a.active {
     color: #ff2a68;
 }
+
+/* Hide the checkbox logic */
+.nav-toggle {
+    display: none;
+}
+
+/* Hamburger Icon Styling */
+.nav-toggle-label {
+    display: none; /* Hidden on desktop */
+    cursor: pointer;
+    padding: 1rem 0;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    display: block;
+    background: #eee;
+    height: 2px;
+    width: 2rem;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    content: '';
+    position: absolute;
+}
+
+.nav-toggle-label span::before { bottom: 8px; }
+.nav-toggle-label span::after { top: 8px; }
+
+/* Mobile View Logic (Screens under 768px) */
+@media screen and (max-width: 768px) {
+    .nav-toggle-label {
+        display: block; /* Show hamburger on mobile */
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #222;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        overflow: hidden;
+        max-height: 0; /* Hidden by default */
+        transition: max-height 0.4s ease-in-out;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        border-top: 1px solid #333;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 1.5rem;
+    }
+
+    /* Reveal menu when checkbox is checked */
+    .nav-toggle:checked ~ .nav-links {
+        max-height: 500px; /* Expands the menu */
+    }
+}
+/* --- UPDATED NAVIGATION END --- */
 
 .hero {
     display: flex;
@@ -40,34 +121,4 @@ form {
     gap: 1rem;
     max-width: 400px;
     margin: 2rem auto;
-}
-
-input, textarea, button {
-    padding: 0.8rem;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-}
-
-button {
-    background: #ff2a68;
-    color: #fff;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-button:hover {
-    background: #ff5790;
-}
-
-/* Page transition */
-.page-content {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.5s ease;
-}
-
-.page-content.active {
-    opacity: 1;
-    transform: translateY(0);
 }

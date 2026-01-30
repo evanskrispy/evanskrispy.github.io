@@ -1,11 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Fade in page content (Existing logic)
+    // 1. Fade in page content
     const page = document.querySelector('.page-content');
     if (page) {
-        page.classList.add('active');
+        // Small timeout ensures the browser has time to register the initial opacity: 0
+        setTimeout(() => {
+            page.classList.add('active');
+        }, 100);
     }
 
-    // 2. Smooth transition for links (Existing logic)
+    // 2. Smooth transition for links
     const links = document.querySelectorAll('nav a');
     links.forEach(link => {
         link.addEventListener('click', e => {
@@ -24,11 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Slideshow Logic (New logic for Index page)
+    // 3. Slideshow Logic
     let slideIndex = 0;
+    // Define slides globally within this scope so showSlides can see them
     const slides = document.getElementsByClassName("slide");
 
-    // Only run if slides exist on the current page
     if (slides.length > 0) {
         showSlides();
     }
@@ -39,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
             slides[i].style.display = "none";  
         }
         
-        // Increment index and reset if at the end
         slideIndex++;
         if (slideIndex > slides.length) {
             slideIndex = 1;

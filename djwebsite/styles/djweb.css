@@ -480,3 +480,5 @@ body.contact-page {
     opacity: 1;
     transform: translateY(0);
 }
+/* Example: Lightening the overlay */
+background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/your-image.jpg');

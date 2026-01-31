@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Fade in page content
     const page = document.querySelector('.page-content');
     if (page) {
-        // Small timeout ensures the browser registers the initial opacity: 0
         setTimeout(() => {
             page.classList.add('active');
         }, 100);
@@ -14,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', e => {
             const href = link.getAttribute('href');
             
-            // Only apply transition if it's an internal link
             if (href && !href.startsWith('#')) {
                 e.preventDefault();
                 if (page) {
@@ -22,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 setTimeout(() => {
                     window.location = href;
-                }, 500); // Matches the CSS transition time
+                }, 500); 
             }
         });
     });

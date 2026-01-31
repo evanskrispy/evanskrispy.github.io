@@ -440,9 +440,13 @@ input, textarea {
 }
 
 
-/* State when the 'active' class is added by JavaScript */
+.page-content {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .page-content.active {
     opacity: 1;
     transform: translateY(0);
 }
-/* Example: Lightening the overlay */

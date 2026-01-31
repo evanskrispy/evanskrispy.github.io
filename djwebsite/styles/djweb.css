@@ -468,3 +468,15 @@ body.contact-page {
 .page-content {
     background: transparent; /* Ensures the background image shows through */
 }
+/* Sets the initial hidden state */
+.page-content {
+    opacity: 0;
+    transform: translateY(10px); /* Optional: slight slide-up effect */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* State when the 'active' class is added by JavaScript */
+.page-content.active {
+    opacity: 1;
+    transform: translateY(0);
+}

@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 500); // Matches your CSS transition time
             }
         });
-    });
 
     // 3. Slideshow Logic
     let slideIndex = 0;
@@ -34,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (slides.length > 0) {
         showSlides();
-    }
 
     function showSlides() {
         // Hide all slides

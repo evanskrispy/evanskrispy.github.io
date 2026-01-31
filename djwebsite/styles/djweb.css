@@ -438,7 +438,7 @@ input, textarea {
     }
     .contact-details { text-align: center; }
 }
-//* Centers the "Get in Touch" heading */
+/* Centers the "Get in Touch" heading */
 .page-content h1.neon {
     text-align: center;
     margin-bottom: 2rem;

@@ -1,6 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Fade in page content logic goes here...
-
+        const page = document.querySelector('.page-content');
+        if (page) {
+        setTimeout(() => {
+        page.classList.add('active');
+    }, 100);
+}
     // 2. Smooth transition for links
     const links = document.querySelectorAll('nav a');
     links.forEach(link => {

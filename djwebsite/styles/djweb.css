@@ -455,7 +455,8 @@ input, textarea {
 .page-content.active {
     opacity: 1;
     transform: translateY(0);
-}}
+}
+}
 /* Parallax Background for Contact Page */
 body.contact-page {
     background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/bmchiram.jpg');
@@ -481,4 +482,3 @@ body.contact-page {
     transform: translateY(0);
 }
 /* Example: Lightening the overlay */
-background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/images/bmchiram.jpg');

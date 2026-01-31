@@ -438,43 +438,7 @@ input, textarea {
     }
     .contact-details { text-align: center; }
 }
-/* Centers the "Get in Touch" heading */
-.page-content h1.neon {
-    text-align: center;
-    margin-bottom: 2rem;
-    width: 100%;
-} /* Added missing bracket here */
 
-/* Sets the initial hidden state */
-.page-content {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-/* State when the 'active' class is added by JS */
-.page-content.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-/* Parallax Background for Contact Page */
-body.contact-page {
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/bmchiram.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* This creates the scrolling effect */
-}
-
-.page-content {
-    background: transparent; /* Ensures the background image shows through */
-}
-/* Sets the initial hidden state */
-.page-content {
-    opacity: 0;
-    transform: translateY(10px); /* Optional: slight slide-up effect */
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
 
 /* State when the 'active' class is added by JavaScript */
 .page-content.active {

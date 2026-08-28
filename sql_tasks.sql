@@ -1,63 +1,59 @@
--- Task 1: Count invoices with balance due > $5,000
+--task1
 DECLARE @count INT;
+
 SELECT @count = COUNT(*) 
 FROM Invoices 
-WHERE InvoiceTotal - PaymentTotal - CreditTotal > 5000;
-PRINT CAST(@count AS VARCHAR) + ' invoices exceed $5,000.';
+WHERE (InvoiceTotal - PaymentTotal - CreditTotal) > 5000;
 
+PRINT CAST(@count AS VARCHAR) + ' invoices exceed $5,000.';
 GO
 
--- Task 2: Count and sum unpaid invoices, conditional result set
+-- Task2
 DECLARE @count INT, @sum DECIMAL(10,2);
-SELECT @count = COUNT(*), @sum = SUM(InvoiceTotal - PaymentTotal - CreditTotal) 
-FROM Invoices 
-WHERE InvoiceTotal - PaymentTotal - CreditTotal > 0;
 
-PRINT 'Number of unpaid invoices is ' + CAST(@count AS VARCHAR) + '.';
-PRINT 'Total balance due is $' + CAST(@sum AS VARCHAR) + '.';
+SELECT @count = COUNT(*), 
+       @sum = SUM(InvoiceTotal - PaymentTotal - CreditTotal) 
+FROM Invoices 
+WHERE (InvoiceTotal - PaymentTotal - CreditTotal) > 0;
 
 IF @sum >= 10000
 BEGIN
+    PRINT 'Number of unpaid invoices is ' + CAST(@count AS VARCHAR) + '.';
+    PRINT 'Total balance due is $' + CONVERT(VARCHAR, @sum, 1) + '.';
+
     SELECT V.VendorName, I.InvoiceNumber, I.InvoiceDueDate, 
-           I.InvoiceTotal - I.PaymentTotal - I.CreditTotal AS Balance
+           (I.InvoiceTotal - I.PaymentTotal - I.CreditTotal) AS Balance
     FROM Invoices I 
     JOIN Vendors V ON I.VendorID = V.VendorID
-    WHERE I.InvoiceTotal - I.PaymentTotal - I.CreditTotal > 0
+    WHERE (I.InvoiceTotal - I.PaymentTotal - I.CreditTotal) > 0
     ORDER BY I.InvoiceDueDate;
 END
 ELSE
 BEGIN
     PRINT 'Total balance due is less than $10,000.';
 END
-
 GO
 
--- Task 3: Stored procedure for vendors without invoices
-CREATE PROCEDURE spVendorsWithoutInvoices
+-- Task3
+CREATE OR ALTER PROCEDURE spVendorsWithoutInvoices
     @VendorName VARCHAR(50)
 AS
 BEGIN
-    SELECT VendorID, VendorName
-    FROM Vendors
-    WHERE VendorName LIKE '%' + @VendorName + '%'
-    AND VendorID NOT IN (SELECT VendorID FROM Invoices)
-    ORDER BY VendorName;
+    SELECT V.VendorID, V.VendorName
+    FROM Vendors V
+    WHERE V.VendorName LIKE '%' + @VendorName + '%'
+      AND NOT EXISTS (SELECT 1 FROM Invoices I WHERE I.VendorID = V.VendorID)
+    ORDER BY V.VendorName;
 END;
-
 GO
 
--- Call the procedure with 'service'
+-- Execution
 EXEC spVendorsWithoutInvoices 'service';
-
-GO
-
--- Call the procedure with 'services'
 EXEC spVendorsWithoutInvoices 'services';
-
 GO
 
--- Task 4: Stored procedure for vendor state invoice total
-CREATE PROCEDURE spVendorStateInvTotal
+-- Task 4
+CREATE OR ALTER PROCEDURE spVendorStateInvTotal
     @VendorState VARCHAR(2) = NULL,
     @SumInvoiceTotal DECIMAL(10,2) OUTPUT
 AS
@@ -70,21 +66,18 @@ END;
 
 GO
 
--- Call without @VendorState
+-- Calling the procedure
 DECLARE @total DECIMAL(10,2);
-EXEC spVendorStateInvTotal NULL, @total OUTPUT;
-PRINT @total;
 
-GO
+-- a. Without @VendorState
+EXEC spVendorStateInvTotal DEFAULT, @total OUTPUT;
+PRINT 'Total (All States): ' + CAST(@total AS VARCHAR);
 
--- Call with @VendorState = 'tx'
+-- b. With 'tx'
 EXEC spVendorStateInvTotal 'tx', @total OUTPUT;
-PRINT @total;
+PRINT 'Total (TX): ' + CAST(@total AS VARCHAR);
 
-GO
-
--- Call with @VendorState = 't%'
+-- c. With 't%'
 EXEC spVendorStateInvTotal 't%', @total OUTPUT;
-PRINT @total;
-
+PRINT 'Total (T%): ' + CAST(@total AS VARCHAR);
 GO
